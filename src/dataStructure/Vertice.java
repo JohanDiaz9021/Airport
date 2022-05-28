@@ -2,7 +2,7 @@ package dataStructure;
 
 import java.util.ArrayList;
 
-public class Vertice <V extends Comparable<V>, U, H> {
+public class Vertice<V extends Comparable<V>, U, H> {
 	
 	private V value;
 	private ArrayList<Edge<U, V, H>> edge;

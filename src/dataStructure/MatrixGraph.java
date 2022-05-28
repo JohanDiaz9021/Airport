@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MatrixGraph <V extends Comparable<V>, U, H extends Comparable<H>> implements IMatrixGraph<U, V, H> {
+public class MatrixGraph<V extends Comparable<V>, U, H extends Comparable<H>> implements IMatrixGraph<U, V, H> {
 
 	public ArrayList<Vertice<V, U, H>> vertice;
 	public ArrayList<Edge<U, V, H>> edges;
@@ -1002,4 +1002,3 @@ public class MatrixGraph <V extends Comparable<V>, U, H extends Comparable<H>> i
 		return verticeArray;
 	}
 }
-

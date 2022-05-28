@@ -26,4 +26,3 @@ public class NodeM <V extends Comparable<V> , U, H> {
 		this.vertice = vertice;
 	}
 }
-
