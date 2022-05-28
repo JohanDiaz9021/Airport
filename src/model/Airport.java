@@ -16,35 +16,17 @@ public class Airport {
 		listGraph = new ListGraph<>();
 	}
 	
-	public void createGraphs() {
-		addVerticeInList();
-		addVerticeInMatrix();
+	public void createGraphs(String[] nombres) {
+		addVerticeInList(nombres);
+		addVerticeInMatrix(nombres);
 	}
 	
-	public void addVerticeInMatrix() {
-		matrixGraph.addVertice("Colombia");
-		matrixGraph.addVertice("España");
-		matrixGraph.addVertice("Japón");
-		matrixGraph.addVertice("Estados Unidos");
-		matrixGraph.addVertice("Australia");
-		matrixGraph.addVertice("Nigeria");
-		matrixGraph.addVertice("Rusia");
-		matrixGraph.addVertice("Portugal");
-		matrixGraph.addVertice("Dubái");
-		matrixGraph.addVertice("Madagascar");
+	public void addVerticeInMatrix(String[] nombres) {
+		
 	}
 	
-	public void addVerticeInList() {
-		listGraph.addVertice("Colombia");
-		listGraph.addVertice("España");
-		listGraph.addVertice("Japón");
-		listGraph.addVertice("Estados Unidos");
-		listGraph.addVertice("Australia");
-		listGraph.addVertice("Nigeria");
-		listGraph.addVertice("Rusia");
-		listGraph.addVertice("Portugal");
-		listGraph.addVertice("Dubái");
-		listGraph.addVertice("Madagascar");
+	public void addVerticeInList(String[] nombres) {
+		
 	}
 	
 	public boolean addEdgeMatrix(String valueIni, String valueEnd, int weight) {
