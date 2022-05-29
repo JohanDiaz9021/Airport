@@ -1,34 +1,40 @@
 package ui;
 
-import java.util.Scanner;
 
-public class Main {
-	private Scanner numScan = new Scanner(System.in);
-	public static void main (String[] args){
-		Main m=new Main();
-		m.menu();
-	}	
-	public void menu() {
-		boolean typeMode = true;
-		boolean run = true;
-		System.out.println(
-				"******************************\n"+
-				"***********AIR-PORT***********\n"
-			+   "******************************\n");
-		while (run) {
-			System.out.println("**************************************************\n" + "1. Grafo representado por matriz de adjacencia \n"
-					+ "2. Grafo representado por lista de adjacencia \n" 
-				+ "**************************************************\n");
-			int eleccion = numScan.nextInt();
 
-			switch (eleccion) {
-			case 1:
-				break;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-			case 2:
+public class Main extends Application{
+	private AirportController air;
 
-				break;
-			}
-		}
+	public Main() {
+		air = new AirportController();
+	}
+
+	public static void main(String[] args) {
+		
+		launch(args);
+	
+	}
+
+	public void start(Stage primaryStage) throws Exception {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view.fxml"));
+		fxmlLoader.setController(air);
+		Parent root = fxmlLoader.load();
+		Image icon = new Image("/Image/avion.png");
+		primaryStage.getIcons().add(icon);
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Airport");
+		primaryStage.setResizable(false);
+		primaryStage.show();
+		air.initializeTableCountryOr();
+		
 	}
 }

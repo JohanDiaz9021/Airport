@@ -10,12 +10,21 @@ import dataStructure.Vertice;
 public class Airport {
 	public MatrixGraph<String, String, Integer> matrixGraph;
 	public ListGraph<String, String, Integer> listGraph;
-	
+	private ArrayList<Country> countryOri;
+	private ArrayList<Country> countryDes;
 	public Airport() {
 		matrixGraph = new MatrixGraph<>();
 		listGraph = new ListGraph<>();
+		CountryOri = new ArrayList<>();
+		Country nuvo = new Country("colombia");
+		countryOri.add(nuvo);
+		setCountryDes(new ArrayList<>());
+		
 	}
 	
+	public void importCountryOri() {
+		
+	}
 	public void createGraphs(String[] nombres) {
 		addVerticeInList(nombres);
 		addVerticeInMatrix(nombres);
@@ -147,4 +156,6 @@ public class Airport {
 		verify = modifyEdgeMatrix(origin, destinatio, weight);
 		return verify;
 	}
+
+	
 }
