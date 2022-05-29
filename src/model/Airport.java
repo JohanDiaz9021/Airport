@@ -1,5 +1,8 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import dataStructure.ListGraph;
@@ -11,17 +14,48 @@ public class Airport {
 	public MatrixGraph<String, String, Integer> matrixGraph;
 	public ListGraph<String, String, Integer> listGraph;
 	private ArrayList<Country> countryOri;
+	
+	
+
 	private ArrayList<Country> countryDes;
 	public Airport() {
 		matrixGraph = new MatrixGraph<>();
 		listGraph = new ListGraph<>();
-		CountryOri = new ArrayList<>();
-		Country nuvo = new Country("colombia");
-		countryOri.add(nuvo);
-		setCountryDes(new ArrayList<>());
+		countryOri = new ArrayList<Country>();
+		setCountryDes(new ArrayList<Country>());
 		
 	}
 	
+	
+	public void importCountryOri(String fileName) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String line = br.readLine();
+		while (line != null) {
+			Country country = new Country(line);
+			countryOri.add(country);
+			line = br.readLine();
+		}
+		br.close();
+		
+	}
+	public void importCountryDes(String fileName) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String line = br.readLine();
+		while (line != null) {
+			Country country = new Country(line);
+			countryDes.add(country);
+			line = br.readLine();
+		}
+		br.close();
+		
+	}
+	public ArrayList<Country> getCountryOri() {
+		return countryOri;
+	}
+
+	public void setCountryOri(ArrayList<Country> countryOri) {
+		this.countryOri = countryOri;
+	}
 	public void importCountryOri() {
 		
 	}
@@ -155,6 +189,14 @@ public class Airport {
 		verify = modifyEdgeList(origin, destinatio, weight);
 		verify = modifyEdgeMatrix(origin, destinatio, weight);
 		return verify;
+	}
+
+	public ArrayList<Country> getCountryDes() {
+		return countryDes;
+	}
+
+	public void setCountryDes(ArrayList<Country> countryDes) {
+		this.countryDes = countryDes;
 	}
 
 	
