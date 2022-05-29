@@ -36,6 +36,7 @@ public class Airport {
 			line = br.readLine();
 		}
 		br.close();
+		createGraphs() ;
 		
 	}
 	public void importCountryDes(String fileName) throws IOException {
@@ -59,17 +60,21 @@ public class Airport {
 	public void importCountryOri() {
 		
 	}
-	public void createGraphs(String[] nombres) {
-		addVerticeInList(nombres);
-		addVerticeInMatrix(nombres);
+	public void createGraphs() {
+		addVerticeInList();
+		addVerticeInMatrix();
 	}
 	
-	public void addVerticeInMatrix(String[] nombres) {
-		
+	public void addVerticeInMatrix() {
+		for(int i = 0;i< countryOri.size();i++) {
+			matrixGraph.addVertice(countryOri.get(i).getName());
+		}
 	}
 	
-	public void addVerticeInList(String[] nombres) {
-		
+	public void addVerticeInList() {
+		for(int i = 0;i< countryOri.size();i++) {
+			listGraph.addVertice(countryOri.get(i).getName());
+		}
 	}
 	
 	public boolean addEdgeMatrix(String valueIni, String valueEnd, int weight) {

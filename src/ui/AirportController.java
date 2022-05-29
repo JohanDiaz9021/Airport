@@ -130,12 +130,21 @@ public class AirportController {
 
 			} else {
 				if (!mode) {
-					out += "Este es el costo mínimo \n";
-					out += airport.dijkstraInList(ini, fin);
+					if (airport.dijkstraInList(ini, fin) != Integer.MAX_VALUE) {
+						out += "Este es el costo mínimo \n";
+						out += airport.dijkstraInList(ini, fin);
+						}else {
+							out += "No se puede viajar desde " + ini + " hasta " + fin ;
+						}
+					
 
 				} else {
-					out += "Este es el costo mínimo \n";
-					out += airport.dijkstraInMatrix(ini, fin);
+					if (airport.dijkstraInMatrix(ini, fin) != Integer.MAX_VALUE) {
+						out += "Este es el costo mínimo \n";
+						out += airport.dijkstraInMatrix(ini, fin);
+						}else {
+							out += "No se puede viajar desde " + ini + " hasta " + fin ;
+						}
 				}
 			}
 			JOptionPane.showMessageDialog(null, out, "Costo", JOptionPane.WARNING_MESSAGE);
