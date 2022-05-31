@@ -18,6 +18,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.Airport;
@@ -34,7 +36,8 @@ public class AirportController {
 		airport.importTrips("src/doc/trips.csv");
 		
 	}
-
+    @FXML
+    private ImageView imgAir;
 	@FXML
 	private TableView<Country> countryOri;
 
@@ -161,12 +164,14 @@ public class AirportController {
 	private TextField countryOrig;
 
 	public void initializeTableCountryOr() throws IOException {
+		Image icon = new Image("/Image/avion.png");
+		imgAir.setImage(icon);
 		ObservableList<Country> observableList;
 		observableList = FXCollections.observableArrayList(airport.getCountryOriList());
 		countryOri.setItems(observableList);
 		origen.setCellValueFactory(new PropertyValueFactory<Country, String>("name"));
 		countryOri.setOnMouseClicked((MouseEvent eventM) -> {
-			if (eventM.getButton().equals(MouseButton.PRIMARY) && eventM.getClickCount() == 2) {
+			if (eventM.getButton().equals(MouseButton.PRIMARY) && eventM.getClickCount() == 1) {
 				Country country;
 				country = countryOri.getSelectionModel().getSelectedItem();
 
@@ -194,7 +199,7 @@ public class AirportController {
 		countyDest.setItems(observableList);
 		destino.setCellValueFactory(new PropertyValueFactory<Country, String>("name"));
 		countyDest.setOnMouseClicked((MouseEvent eventM) -> {
-			if (eventM.getButton().equals(MouseButton.PRIMARY) && eventM.getClickCount() == 2) {
+			if (eventM.getButton().equals(MouseButton.PRIMARY) && eventM.getClickCount() == 1) {
 				Country country;
 				country = countyDest.getSelectionModel().getSelectedItem();
 
