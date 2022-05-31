@@ -13,32 +13,41 @@ import dataStructure.Vertice;
 public class Airport {
 	public MatrixGraph<String, String, Integer> matrixGraph;
 	public ListGraph<String, String, Integer> listGraph;
+	private ArrayList<Country> countryOriList;
 	private ArrayList<Country> countryOri;
-	
 	
 
 	private ArrayList<Country> countryDes;
 	public Airport() {
 		matrixGraph = new MatrixGraph<>();
 		listGraph = new ListGraph<>();
-		countryOri = new ArrayList<Country>();
+		countryOriList = new ArrayList<Country>();
 		setCountryDes(new ArrayList<Country>());
-		
+		countryOri = new ArrayList<Country>();
 	}
 	
 	
-	public void importCountryOri(String fileName) throws IOException {
+	public void importCountryOriList(String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		String line = br.readLine();
 		while (line != null) {
 			Country country = new Country(line);
-			countryOri.add(country);
+			countryOriList.add(country);
 			line = br.readLine();
 		}
 		br.close();
-		createGraphs() ;
 		
 	}
+	public ArrayList<Country> getCountryOriList() {
+		return countryOriList;
+	}
+
+
+	public void setCountryOriList(ArrayList<Country> countryOriList) {
+		this.countryOriList = countryOriList;
+	}
+
+
 	public void importCountryDes(String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(fileName));
 		String line = br.readLine();
@@ -202,6 +211,38 @@ public class Airport {
 
 	public void setCountryDes(ArrayList<Country> countryDes) {
 		this.countryDes = countryDes;
+	}
+
+
+	public void importTrips(String string) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader(string));
+		String line = br.readLine();
+		while (line != null) {
+			
+			String[] cadena = line.split(";");
+			
+			int  price = Integer.parseInt(cadena[2]) ;
+			  addEdgeMatrix(cadena[0], cadena[1], price);
+			addEdgeList(cadena[0], cadena[1], price);
+			
+			line = br.readLine();
+		}
+		br.close();
+		
+	}
+
+
+	public void importCountryOri(String string) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader(string));
+		String line = br.readLine();
+		while (line != null) {
+			Country country = new Country(line);
+			countryOri.add(country);
+			line = br.readLine();
+		}
+		br.close();
+		createGraphs() ;
+		
 	}
 
 	

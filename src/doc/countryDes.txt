@@ -11,11 +11,11 @@ Argentina
 Armenia
 Australia
 Austria
-Azerbaiyán
+Azerbaiyan
 Cabo Verde
 Camboya
-Camerún
-Canadá
+Camerun
+Canada
 Catar
 Chad
 Chile
@@ -23,7 +23,7 @@ China
 Chipre
 Colombia
 Comoras
-República del Congo
+Republica del Congo
 Corea del Norte
 Corea del Sur
 Costa de Marfil
@@ -35,17 +35,17 @@ Tanzania
 Togo
 Tonga
 Trinidad y Tobago
-Túnez
-Turquía
+Tunez
+Turquia
 Tuvalu
 Madagascar
 Marruecos
 Mauricio
 Mauritania
-México
+Mexico
 Micronesia
 Moldavia
-Mónaco
+Monaco
 Mongolia
 Montenegro
 Mozambique

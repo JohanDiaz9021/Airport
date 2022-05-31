@@ -1,7 +1,5 @@
 package ui;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -26,13 +24,15 @@ import model.Airport;
 import model.Country;
 
 public class AirportController {
-	public static final String EMPLOYEES_NAME = "src/doc/countryOri.txt";
 	private Airport airport;
 
 	public AirportController() throws IOException {
 		airport = new Airport();
-		airport.importCountryDes("src/doc/countryDes.txt");
 		airport.importCountryOri("src/doc/countryOri.txt");
+		airport.importCountryDes("src/doc/countryDes.txt");
+		airport.importCountryOriList("src/doc/countryOriList.txt");
+		airport.importTrips("src/doc/trips.csv");
+		
 	}
 
 	@FXML
@@ -100,7 +100,9 @@ public class AirportController {
 					"Error", JOptionPane.WARNING_MESSAGE);
 		} else {
 			if (fin.equals("Todos")) {
+				int costoTotal = 0;
 				if (!mode) {
+					
 					out = "Estos son los costos mínimos \n";
 					ArrayList<Integer> inte = airport.dijkstraInList(ini);
 					ArrayList<ListVertice<String, String, Integer>> list = airport.listGraph.getListVertice();
@@ -108,11 +110,12 @@ public class AirportController {
 
 						if (inte.get(i) != Integer.MAX_VALUE) {
 							out += list.get(i).getValue() + " con costo: " + inte.get(i) + "\n";
+							costoTotal = inte.get(i)+ costoTotal;
 						} else {
-							out += "No se puede viajar desde " + ini + " hasta " + list.get(i).getValue();
+							out += " No se puede viajar desde " + ini + " hasta " + list.get(i).getValue() +"\n";
 						}
+						 
 					}
-
 				} else {
 					out = "Estos son los costos mínimos \n";
 					ArrayList<Integer> inte = airport.dijkstraInMatrix(ini);
@@ -121,12 +124,14 @@ public class AirportController {
 
 						if (inte.get(i) != Integer.MAX_VALUE) {
 							out += list.get(i).getValue() + " con costo: " + inte.get(i) + "\n";
+							costoTotal = inte.get(i)+ costoTotal;
 						} else {
-							out += "No se puede viajar desde " + ini + " hasta " + list.get(i).getValue();
+							out += " No se puede viajar desde " + ini + " hasta " + list.get(i).getValue() +"\n";
 						}
 					}
 
 				}
+				out += "Costo Total :" + costoTotal ;
 
 			} else {
 				if (!mode) {
@@ -157,7 +162,7 @@ public class AirportController {
 
 	public void initializeTableCountryOr() throws IOException {
 		ObservableList<Country> observableList;
-		observableList = FXCollections.observableArrayList(airport.getCountryOri());
+		observableList = FXCollections.observableArrayList(airport.getCountryOriList());
 		countryOri.setItems(observableList);
 		origen.setCellValueFactory(new PropertyValueFactory<Country, String>("name"));
 		countryOri.setOnMouseClicked((MouseEvent eventM) -> {
